@@ -13,6 +13,6 @@ public class Solution {
     }
         return maxProfit;
     }
-} BestTimeToBuyAndSellStock2 {
+} BestTimeToBuyAndSellStock2{
     
 }
