@@ -5,7 +5,7 @@ public class Solution {
         for(int i = 1;i<=prices.length-1;i++){
             if(prices[i] - stock > 0){
                 maxProfit += prices[i] - stock;
-                stock = prices[i];
+                stock = prices[i]; 
         }
         else if(prices[i] < stock){
             stock = prices[i];
