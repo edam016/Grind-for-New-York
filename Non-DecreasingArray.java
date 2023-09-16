@@ -15,10 +15,10 @@ class Solution {
             if(nums[i-1] > nums[i]){
                 error++;
                 if(i-2<0 || nums[i-2] <= nums[i]){
-                    nums[i-1] = nums[i];// [a,b,c,d] so here we are changing b to the value of c as we should min the values
+                    nums[i-1] = nums[i];// [a,b,c,d] so here we are changing b to the value of c as we should min the values. If i=1 then we can change the value to match the first value.
                 }
                 else{
-                    nums[i] = nums[i-1];//[a,b,c,d] so here we are changing c to have the value of b. If i=1 then we can change the value to match the first value.
+                    nums[i] = nums[i-1];//[a,b,c,d] so here we are changing c to have the value of b. 
                 }
             }
         }
