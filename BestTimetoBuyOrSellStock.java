@@ -15,6 +15,14 @@ class Solution {
         }
         return maxProfit;
     }
-}public class BestTimetoBuyOrSellStock {
-    
+    public int maxProfit(int[] prices) {
+        int min = 0;
+        int profit = Integer.MIN_VALUE;
+        int current = prices[0];
+        for(int i = 1;i<=prices.length-1;i++){
+            profit = Math.max(prices[i] - current, profit);
+            current = Math.min(prices[i], current);
+        }
+        return profit < 0 ? 0 : profit;
+    }
 }
