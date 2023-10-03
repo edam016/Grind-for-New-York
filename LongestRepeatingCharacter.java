@@ -34,6 +34,21 @@ class Solution {
         }
         return maxLength;
     }
+        public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+        int n1 = 0;
+        int n2 = 0;
+        HashSet<Integer> hm = new HashMap();
+        for(int j =0lj<=nums1.length-1;j++){
+            hs.add(nums1[i]);
+        }
+        for(int i = 0;i<=nums2.length-1;i++){
+            if(!hs.add(nums2[i])){
+                for(int j = i + 1;j<=nums2.length-1;j++){
+                    if(nums2[j] > nums1[2])
+                }
+            }
+        }
+    }
 }
 
 //quite slow time efficiency wise
