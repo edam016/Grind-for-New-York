@@ -25,4 +25,22 @@ class Solution {
         }
         return maxLength;
     }
+    public int lengthOfLongestSubstring(String s) {
+        HashSet<Character> hs = new HashSet<Character>();
+        int j = 0;
+        int max = Integer.MIN_VALUE;
+        if(s.length() == 0){
+            return 0;
+        }
+        for(int i = 0;i<=s.length()-1;i++){
+            if(!hs.add(s.charAt(i))){
+                while(!hs.add(s.charAt(i))){
+                    hs.remove(s.charAt(j));
+                    j++;
+                }
+            }
+            max = Math.max(max, hs.size());
+        }
+        return max;
+    }
 }
