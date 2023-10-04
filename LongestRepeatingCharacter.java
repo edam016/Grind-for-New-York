@@ -51,4 +51,4 @@ class Solution {
     }
 }
 
-//quite slow time efficiency wise
+//quite slow time efficiency wise, second is faster as the maxChar variable is used instead of rechecking the hashmap for the highest entry each time as only the max Length is important so no need to constantly check
