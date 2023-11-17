@@ -4,27 +4,23 @@ class Solution {
         int sum = 0;
         for(int i = 0;i<=weights.length-1;i++){
             maxVal = Math.max(weights[i], maxVal);
-            sum += weights[i];
+            sum += weights[i];//sum is upperbound as 1 massive boat can be used
         }
-        int[] arr = new int [sum];
-        int left = 0, right = arr.length-1, middle = 0;
-        for(int i = 0;i<=arr.length-1;i++){
-            arr[i] = i+1;
-        }
-        while(left <= right){
+        int left = 0, right = sum, middle = 0;
+        while(left < right){
             middle = (left + right)/2;
-            if(maxVal > arr[middle] || !checkVal(weights, days, arr[middle])){
+            if(maxVal > middle || !checkVal(weights, days, middle)){
                 left = middle + 1;
             }
             else{
-                right = middle - 1;
+                right = middle; // no need for -1 as middle might be the last one that works so keep in solution set
             }
         }
-        return left + 1;
+        return left;
     }
     public boolean checkVal(int[] weights, int days, int capacity){
-        int total = 0, index = 0, count = 0;
-        while(index <= weights.length-1){
+        int total = 0, count = 0;
+        for(int index = 0;index<=weights.length-1;index++){
             total = weights[index] + total;
             if(total > capacity){
                 total = weights[index];
@@ -34,7 +30,6 @@ class Solution {
                 total = 0;
                 count++;
             }
-            index++;
         }
         if(total > 0){
             count++;
