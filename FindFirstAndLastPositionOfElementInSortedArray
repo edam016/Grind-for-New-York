@@ -1,0 +1,56 @@
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int [] notFound = {-1, -1};
+        int left = 0, right = nums.length-1;
+        int index = 0;
+        if(nums.length == 0){
+            return notFound;
+        }
+        if(nums.length == 1){
+            if(nums[0] == target){
+                return new int[]{0,0};
+            }
+            else{
+                return notFound;
+            }
+        }
+        while(left < right){
+            int middle = (left + right)/2;
+            if(target == nums[middle]){
+                return findRanges(nums, middle, target);
+            }
+
+            if(nums[middle] > target){
+                right = middle - 1;
+            }
+            else{
+                left = middle + 1;
+            }
+        }
+        return nums[left] == target ? findRanges(nums, left, target) : notFound;
+    }
+
+    public int[] findRanges(int[] nums, int middle, int target){
+        int i = middle, j = middle;
+        int [] result = new int [2];
+        while(i + 1<= nums.length-1 && nums[i] == target){
+            if(nums[i + 1] == target){
+                i++;
+            }
+            else{
+                break;
+            }
+        }
+        while(nums[j] == target && j-1 >= 0){
+            if(nums[j-1] == target){
+                j--;
+            }
+            else{
+                break;
+            }
+        }
+        result[0] = j;
+        result[1] = i;
+        return result;
+    }
+}
