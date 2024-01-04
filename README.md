@@ -1,3 +1,3 @@
 # Grind-for-New-York
 
-Leetcode practice from Neetcode question bank.
+Leetcode Question Practice bank with solutions.
