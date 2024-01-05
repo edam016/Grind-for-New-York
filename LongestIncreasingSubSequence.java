@@ -19,5 +19,7 @@ class Solution {
             }
         }
         return size;
+        //performing binary search on array to find value which would make it not ascending as binary search array must be sorted. Then it would replace the problematic portion to keep it ascending hence 
+        //a subsequence
     }
 }
