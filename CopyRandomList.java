@@ -21,6 +21,7 @@ class Solution {
             map.put(cur, new Node(cur.val));
             cur = cur.next;
         }
+        //Make a complete copy as if you dont know if certain nodes are created yet (random) so put all in hashmap then proceed
         cur = head;
         while(cur != null){
             map.get(cur).next = map.get(cur.next);
