@@ -15,24 +15,24 @@ class Solution {
         hm.put('8', "tuv");
         hm.put('9', "wxyz");
         StringBuilder sb = new StringBuilder();
-        recursive(digits, result, 0, 0, sb);
+        recursive(digits, result, 0, sb);
         return result;
     }
 
-    public void recursive(String Digits, List<String> result, int digIndex, int letIndex, StringBuilder temp){
+    public void recursive(String Digits, List<String> result, int digIndex, StringBuilder temp){
         if(temp.length() == Digits.length()){
             result.add(temp.toString());
             return;
         }
 
-        if(digIndex >= Digits.length() || letIndex >= hm.get(Digits.charAt(digIndex)).length()){
+        if(digIndex >= Digits.length() ){
             return;
         }
 
-        for(int i = letIndex;i<hm.get(Digits.charAt(digIndex)).length();i++){
+        for(int i = 0;i<hm.get(Digits.charAt(digIndex)).length();i++){
             String val = hm.get(Digits.charAt(digIndex));
             temp.append(val.charAt(i));
-            recursive(Digits, result, digIndex + 1, 0, temp);
+            recursive(Digits, result, digIndex + 1, temp);
             temp.deleteCharAt(temp.length()-1); 
         }
     }
