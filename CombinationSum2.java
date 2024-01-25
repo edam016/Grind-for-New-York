@@ -15,7 +15,7 @@ class Solution {
         }
         for(int i = index;i<candidates.length;i++){
             if(i > index && candidates[i] == candidates[i-1]){
-                continue;
+                continue; // takes care of duplicates for the loop iteration and the backtracking takes care of the using of the next element
             }
             sum+= candidates[i];
             temp.add(candidates[i]);
