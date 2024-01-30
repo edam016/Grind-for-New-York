@@ -1,6 +1,7 @@
 class Solution {
     public int numDecodings(String s) {
         int[] dp = new int[s.length() + 1];
+        
         dp[0] = 1;
         dp[1] = s.charAt(0) == '0' ? 0 : 1;
         for(int i = 2;i<=s.length();i++){
@@ -24,12 +25,12 @@ class Solution {
 
                 2,6 adding 1
                 2,6 || 26 -> 2,6,1 || 26,1
+
                 2,2 adding 1
                 22 || 2,2 -> 2,2,1 || 22,1 || 2,21 
 
                 */
-
-                
+ 
             }
         }
 
