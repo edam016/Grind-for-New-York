@@ -1,0 +1,27 @@
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int left = 0;
+        int right = 0;
+        int size = 0;
+        int maxSize = 0;
+        HashMap<Character, Integer> hm = new HashMap();
+        while(right < s.length()){
+            if(hm.containsKey(s.charAt(right))){
+                while(hm.containsKey(s.charAt(right))){
+                    hm.remove(s.charAt(left));
+                    left++;
+                    size--;
+                }
+                hm.put(s.charAt(right), 1);
+                size++;
+            }
+            else{
+                hm.put(s.charAt(right), 1);
+                size++;
+            }
+            right++;
+            maxSize = Math.max(maxSize, size);
+        }
+        return maxSize;
+    }
+}

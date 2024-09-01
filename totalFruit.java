@@ -34,3 +34,39 @@ class Solution {
         return result;
     }
 }
+
+class Solution {
+    public int totalFruit(int[] fruits) {
+        HashMap<Integer, Integer> hm = new HashMap();
+        int left = 0;
+        int right = 0;
+        int size = 0;
+        int maxSize = 0;
+        while(right < fruits.length){
+            if(hm.containsKey(fruits[right])){
+                int val = hm.get(fruits[right]);
+                hm.put(fruits[right], val + 1);
+                size++;
+            }
+            else{
+                hm.put(fruits[right], 1);
+                size++;
+            }
+            while(hm.size() > 2){
+                if(hm.get(fruits[left]) > 1){
+                    int val = hm.get(fruits[left]) - 1;
+                    hm.put(fruits[left], val);
+                    size--;
+                }
+                else{
+                    hm.remove(fruits[left]);
+                    size--;
+                }
+                left++;
+                }
+            right++;
+            maxSize = Math.max(maxSize, size);
+        }
+        return maxSize;
+    }
+}
