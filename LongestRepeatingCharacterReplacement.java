@@ -17,13 +17,20 @@ class Solution {
             //Window does not change size if you keep adding new characters as it will remain this size due to maxChar being at max capacity and only increases when you see a character that has higher count
             /**
             
-            AABACD will be AABA and then ABAC
+            AABACDDDDDD will be AABA and then ABAC
 
             AABA -> 3 - 0 + 1 - 3 = 1
             AABAC -> 4 - 0 + 1 - 3 = 2 -> ABAC
             ABAC -> 4 - 1 + 1 - 3 = 1
             ABACD -> 5 - 1 + 1 - 3 = 2 -> BACD
             BACD -> 5 - 2 + 1 - 3 = 1
+            BACDD -> 6 - 2 + 1 - 3 = 2 -> ACDD
+            ACDD -> 6 - 3 + 1 - 3 = 1
+            ACDDD -> 7 - 3 + 1 - 3 = 2 -> CDDD
+            CDDD -> 7 - 4 + 1 - 3 = 1
+            CDDDD -> 8 - 4 + 1 - 4 = 1  ACHIEVED MAX LENGTH
+
+            If new characters are more then maxChar, then it must be greater then the current maxChar value so window stays same until then
              */
             maxLength = Math.max(maxLength, right - left + 1);
             right++;
