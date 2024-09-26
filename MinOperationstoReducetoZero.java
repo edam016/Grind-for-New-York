@@ -73,3 +73,32 @@ class Solution {
         return minOp == Integer.MAX_VALUE ? -1 : minOp;
     }
 }
+
+class Solution {
+    public int minOperations(int[] nums, int x) {
+        HashMap<Integer, Integer> hm = new HashMap();
+        int sum = 0;
+        int minOps = Integer.MAX_VALUE;
+        for(int i = nums.length-1;i>=0;i--){
+            sum += nums[i];
+            hm.put(sum, nums.length - i);
+        }
+
+        if(hm.containsKey(x)){
+            minOps = hm.get(x);
+        }
+        sum = 0;
+        for(int i = 0;i<nums.length;i++){
+            sum += nums[i];
+            if(sum == x){
+                minOps = Math.min(minOps, i + 1);
+            }
+            if(hm.containsKey(x - sum)){
+                if(i + hm.get(x - sum) < nums.length){
+                    minOps = Math.min(minOps, i + 1 + hm.get(x - sum));
+                }
+            }
+        }
+        return minOps == Integer.MAX_VALUE ? -1 : minOps;
+    }
+}
