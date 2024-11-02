@@ -8,7 +8,7 @@ class MedianFinder {
     
     public void addNum(int num) {
         max.offer((double)num);
-        min.offer(max.poll());
+        min.offer(max.poll()); // ensures that the value that enters min is the smallest of max
         if(max.size() < min.size()){
             max.offer(min.poll());
         }
