@@ -49,3 +49,34 @@ class Solution {
         return grid;
     }
 }
+
+class Solution {
+    public int[][] updateMatrix(int[][] mat) {
+        Queue<int[]> q = new LinkedList();
+        int maxVal = mat.length * mat[0].length;        
+        for(int i = 0;i<mat.length;i++){
+            for(int j = 0;j<mat[0].length;j++){
+                if(mat[i][j] == 0){
+                    q.offer(new int[]{i,j});
+                }
+                else{
+                    mat[i][j] = maxVal;
+                }
+            }
+        }
+        int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
+        while(!q.isEmpty()){
+            int[] cell = q.poll();
+            for(int[] dir : directions){
+                int x = cell[0] + dir[0];
+                int y = cell[1] + dir[1];
+                if(x >= 0 && x < mat.length && y >= 0 && y < mat[0].length && mat[x][y] == maxVal){
+                    mat[x][y] = mat[cell[0]][cell[1]] + 1;
+                    q.offer(new int[]{x, y});
+                }
+            }//adding previous squares to future total here and using mat[x][y] to keep track of future cells
+        }
+        return mat;
+    }
+}
