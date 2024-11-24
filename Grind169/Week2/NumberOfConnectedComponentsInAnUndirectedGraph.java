@@ -42,3 +42,36 @@ class Solution {
         }
     }
 }
+
+class Solution {
+    public int countComponents(int n, int[][] edges) {
+        
+        HashMap<Integer, Set<Integer>> adj = new HashMap();
+
+        for(int[] edge : edges){
+            adj.computeIfAbsent(edge[0], k-> new HashSet()).add(edge[1]);
+            adj.computeIfAbsent(edge[1], k-> new HashSet()).add(edge[0]);
+        }
+
+        Set<Integer> visited = new HashSet();
+        List<List<Integer>> result = new ArrayList();
+        int connected = 0;
+        for(int i = 0; i<n;i++){
+            if(!visited.contains(i)){
+                dfs(adj, visited, i);
+                connected++;
+            }
+        }
+
+        return connected;
+    }
+
+    public void dfs(HashMap<Integer, Set<Integer>> adj, Set<Integer> visited, int node){
+        visited.add(node);
+        for(int next : adj.getOrDefault(node, Collections.emptySet())){
+            if(!visited.contains(next)){
+                dfs(adj, visited, next);
+            }
+        }
+    }
+}
